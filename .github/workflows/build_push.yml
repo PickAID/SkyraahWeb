@@ -18,6 +18,7 @@ jobs:
         npm install -g pnpm
         pnpm install
         pnpm run docs:build
+        ls -l
 
     - name: scp ssh pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@latest
