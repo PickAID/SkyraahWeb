@@ -22,4 +22,6 @@ jobs:
 
     - name: push ssh
       run: |
+        sudo apt-get update
+        sudo apt-get install sshpass
         sshpass -p ${{ secrets.SEVER_PASS }} scp -P 22 -r ./docs/.vitepress/dist/* ${{ secrets.SEVER_USER }}@${{ secrets.SEVER_HOST }}:"/skyraah"
