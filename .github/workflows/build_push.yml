@@ -1,0 +1,36 @@
+name: build and push to sever
+on: [push]
+
+jobs:
+  deployment_job:
+    runs-on: ubuntu-latest
+    name: Deployment Job
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: npm install, build, and test
+      run: |
+        npm install -g pnpm
+        pnpm install
+        pnpm run docs:build
+
+    - name: SSH
+        uses: ErenKrt/ssh-push@main
+        with:
+          host: ${{ secrets.SEVER_HOST }}
+          username: ${{ secrets.SEVER_USER }}
+          password: ${{ secrets.SEVER_PASS }}
+          source: "./docs/.vitepress/dist"
+          destination: "/skyraah"
+          #scripts: |
+          #  rm -r /home/eren/erencandev && mkdir /home/eren/erencandev
+          #  cd /home/eren/erencandev && mv /home/eren/web.zip . &&
+          #  unzip web.zip && rm -r web.zip
+          #  rm -r /home/eren/erencandev/node_modules
+          #  sudo -s && cd /home/eren/erencandev/ && npm i
+          #  pm2 restart 1

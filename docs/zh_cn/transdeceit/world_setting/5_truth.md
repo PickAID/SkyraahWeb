@@ -2,7 +2,7 @@
 title: 真理之门
 ---
 
--title}}
+# {{ $frontmatter.title }}
 
 ***
 
