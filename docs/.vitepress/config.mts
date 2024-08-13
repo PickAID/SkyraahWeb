@@ -36,5 +36,8 @@ export default defineConfig({
       md.use(ruby);
     }
   },
-  //base: '/skyraah/',
+  footer: {
+    message: '<a href="https://beian.miit.gov.cn/">闽ICP备2023023682号-1</a>.',
+    copyright: '<a href="https://beian.mps.gov.cn/#/query/webSearch">闽公网安备35020602002951号</a>.'
+  }
 })
