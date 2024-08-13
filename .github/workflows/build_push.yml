@@ -15,21 +15,17 @@ jobs:
 
     - name: npm install, build, and test
       run: |
-        npm install
-        npm run build --if-present
+        npm install -g pnpm
+        pnpm install
+        pnpm run docs:build
 
-    - name: SSH
-        uses: ErenKrt/ssh-push@v1
-        with:
-          host: ${{ secrets.SEVER_HOST }}
-          username: ${{ secrets.SEVER_USER }}
-          password: ${{ secrets.SEVER_PASS }}
-          source: "./docs/.vitepress/dist"
-          destination: "/skyraah"
-          #scripts: |
-          #  rm -r /home/eren/erencandev && mkdir /home/eren/erencandev
-          #  cd /home/eren/erencandev && mv /home/eren/web.zip . &&
-          #  unzip web.zip && rm -r web.zip
-          #  rm -r /home/eren/erencandev/node_modules
-          #  sudo -s && cd /home/eren/erencandev/ && npm i
-          #  pm2 restart 1
+    - name: scp ssh pipelines
+      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      env:
+        LASTSSH: "Doing something after copying"
+      with:
+        host: ${{ secrets.SEVER_HOST }}
+        user: ${{ secrets.SEVER_USER }}
+        pass: ${{ secrets.SEVER_PASS }}
+        scp: |
+          ./docs/.vitepress/dist/* => /skyraah
