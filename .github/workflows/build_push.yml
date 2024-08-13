@@ -28,4 +28,4 @@ jobs:
         user: ${{ secrets.SEVER_USER }}
         pass: ${{ secrets.SEVER_PASS }}
         scp: |
-          ./docs/.vitepress/dist/* => /skyraah
+          docs/.vitepress/dist/* => /skyraah
