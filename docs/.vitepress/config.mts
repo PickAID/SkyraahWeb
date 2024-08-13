@@ -36,5 +36,5 @@ export default defineConfig({
       md.use(ruby);
     }
   },
-  base: '/skyraah/',
+  //base: '/skyraah/',
 })
