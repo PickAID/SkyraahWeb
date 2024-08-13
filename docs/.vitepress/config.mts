@@ -25,6 +25,11 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/skyraah/SkyraahWeb' }
     ],
+    
+  footer: {
+    message: '<a href="https://beian.miit.gov.cn/">闽ICP备2023023682号-1</a>-<a href="https://beian.mps.gov.cn/#/query/webSearch">闽公网安备35020602002951号</a>.',
+    copyright: '版权所有 © 2024-2024 椰浆'
+  }
   },
   markdown: {
     config: (md) => {
@@ -36,8 +41,4 @@ export default defineConfig({
       md.use(ruby);
     }
   },
-  footer: {
-    message: '<a href="https://beian.miit.gov.cn/">闽ICP备2023023682号-1</a>.',
-    copyright: '<a href="https://beian.mps.gov.cn/#/query/webSearch">闽公网安备35020602002951号</a>.'
-  }
 })
