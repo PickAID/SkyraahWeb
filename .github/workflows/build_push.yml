@@ -20,13 +20,6 @@ jobs:
         pnpm run docs:build
         ls -l
 
-    - name: scp ssh pipelines
-      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-      env:
-        LASTSSH: "Doing something after copying"
-      with:
-        host: ${{ secrets.SEVER_HOST }}
-        user: ${{ secrets.SEVER_USER }}
-        pass: ${{ secrets.SEVER_PASS }}
-        scp: |
-          docs/.vitepress/dist/* => /skyraah
+    - name: push ssh
+      run: |
+        sshpass -p ${{ secrets.SEVER_PASS }} scp -P 22 -r ./docs/.vitepress/dist/* ${{ secrets.SEVER_USER }}@${{ secrets.SEVER_HOST }}:"/skyraah"
