@@ -20,7 +20,7 @@ jobs:
         pnpm run docs:build
 
     - name: SSH
-        uses: ErenKrt/ssh-push@main
+        uses: ErenKrt/ssh-push@v1
         with:
           host: ${{ secrets.SEVER_HOST }}
           username: ${{ secrets.SEVER_USER }}
