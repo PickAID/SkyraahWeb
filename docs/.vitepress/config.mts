@@ -26,10 +26,14 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/skyraah/SkyraahWeb' }
     ],
     
-  footer: {
-    message: '<font size="-2" color=gray><a href="https://beian.miit.gov.cn/">闽ICP备2023023682号-1</a> <a href="https://beian.mps.gov.cn/#/query/webSearch">闽公网安备35020602002951号</a><br>技术支持 厦门破碎工坊网络科技有限公司</font>',
-    copyright: '<font size="-2" color=gray>版权所有 © 2024-2024 椰浆</font>'
-  }
+    footer: {
+      message: '<font size="-2" color=gray><a href="https://beian.miit.gov.cn/">闽ICP备2023023682号-1</a> <a href="https://beian.mps.gov.cn/#/query/webSearch">闽公网安备35020602002951号</a><br>技术支持 厦门破碎工坊网络科技有限公司</font>',
+      copyright: '<font size="-2" color=gray>版权所有 © 2024-2024 椰浆</font>'
+    },
+    docFooter:{
+      prev: "上一页",
+      next: "下一页"
+    }
   },
   markdown: {
     config: (md) => {

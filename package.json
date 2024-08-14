@@ -9,6 +9,9 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "@iconify/json": "^2.2.236",
+    "@jiaminghi/data-view": "^2.10.0",
+    "@mdi/font": "^7.4.47",
     "@mdit/plugin-abbr": "^0.13.0",
     "@mdit/plugin-align": "^0.13.0",
     "@mdit/plugin-container": "^0.13.0",
@@ -17,9 +20,13 @@
     "@mdit/plugin-ruby": "^0.13.0",
     "@mdit/plugin-spoiler": "^0.13.0",
     "@mdit/plugin-tasklist": "^0.13.0",
+    "@vitejs/plugin-vue": "^5.1.2",
     "axios": "^1.7.3",
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0",
-    "vue": "^3"
+    "sass-embedded": "^1.77.8",
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3",
+    "vuetify": "^3.6.14"
   }
 }
