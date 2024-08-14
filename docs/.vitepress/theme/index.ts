@@ -24,7 +24,7 @@ export default {
   
   enhanceApp: (ctx) => {
     DefaultTheme.enhanceApp(ctx);
-    ctx.app.use(vuetify);
+    //ctx.app.use(vuetify);
     //ctx.app.component(FooterContent);
     //ctx.app.use(Layout);
   },
