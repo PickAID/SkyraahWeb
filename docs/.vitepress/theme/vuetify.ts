@@ -3,7 +3,6 @@ import * as components from 'vuetify/components'
 
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.min.css'
-import 'vue'
 import "typeface-roboto/index.css";
 
 export default createVuetify({

@@ -8,6 +8,10 @@ import { ins } from "@mdit/plugin-ins"
 import { mark } from "@mdit/plugin-mark"
 import { ruby } from "@mdit/plugin-ruby"
 
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { TDesignResolver } from 'unplugin-vue-components/resolvers';
+
 export default defineConfig({
   title: "椰浆设定集",
   description: "一个专门用于存放设定的地方",
@@ -44,5 +48,25 @@ export default defineConfig({
       md.use(mark);
       md.use(ruby);
     }
+  },
+  vite: {
+    ssr: {
+      noExternal: ['vuetify'],
+    },
+    plugins: [
+      AutoImport({
+        resolvers: [TDesignResolver({
+          library: 'vue-next'
+        })],
+      }),
+      Components({
+        resolvers: [TDesignResolver({
+          library: 'vue-next'
+        })],
+      }),
+    ],
+    define: {
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true,
+    },
   },
 })
