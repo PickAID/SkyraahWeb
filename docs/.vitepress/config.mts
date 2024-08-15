@@ -1,12 +1,14 @@
 // @ts-nocheck
 import { defineConfig } from 'vitepress'
 import { SidebarGenerator } from "./utils/sidebarGenerator"
+
 import { spoiler } from "@mdit/plugin-spoiler"
 import { abbr } from "@mdit/plugin-abbr"
 import { align } from "@mdit/plugin-align"
 import { ins } from "@mdit/plugin-ins"
 import { mark } from "@mdit/plugin-mark"
 import { ruby } from "@mdit/plugin-ruby"
+import timeline from "vitepress-markdown-timeline"; 
 
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -29,7 +31,7 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/skyraah/SkyraahWeb' }
     ],
-    
+
     docFooter:{
       prev: "上一页",
       next: "下一页"
@@ -43,6 +45,7 @@ export default defineConfig({
       md.use(ins);
       md.use(mark);
       md.use(ruby);
+      md.use(timeline);
     }
   },
   vite: {

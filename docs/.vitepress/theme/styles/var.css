@@ -5,14 +5,14 @@
     --vp-c-brand-3: #5e70c9;
 }
   
-  .dark {
+.dark {
     --vp-c-brand-1: #703dd6;
     --vp-c-brand-2: #6830a4;
     --vp-c-brand-3: #4c2984;
 }
-  /* 以前的vp-c-brand已弃用 */
+/* 以前的vp-c-brand已弃用 */
   
-  :root {
+:root {
     /* hero标题渐变色 */
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
@@ -22,8 +22,8 @@
     --vp-home-hero-image-filter: blur(40px);
 }
   
-  /* 也可自行单独修改brand按钮 */
-  /* :root {
+/* 也可自行单独修改brand按钮 */
+/*:root {
     --vp-button-brand-border: #F6CEEC;
     --vp-button-brand-text: #F6CEEC;
     --vp-button-brand-bg: #D939CD;
@@ -33,8 +33,23 @@
     --vp-button-brand-hover-bg: #D939CD;
   
     --vp-button-brand-active-border: #F6CEEC;
-  } */
+} */
 
-  .vp-doc a {
+.vp-doc a {
     text-decoration: none;
+}
+
+.vp-doc blockquote {
+    border-radius: 5px;
+    padding: 10px 16px;
+    background-color: #9d9d9d1a;
+    position: relative;
+    border-left: 4px solid #56565680;
+}
+.medium-zoom-overlay {
+    z-index: 30;
+}
+
+.medium-zoom-image {
+    z-index: 9999 !important;/* 给的值是21，但是实测盖不住，直接999 */
 }
