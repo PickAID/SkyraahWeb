@@ -1,12 +1,12 @@
 /* var.css */
 :root {
-    --vp-c-brand-1: #7d8fdf;
+    --vp-c-brand-1: #703dd6;
     --vp-c-brand-2: #6c7edc;
     --vp-c-brand-3: #5e70c9;
 }
   
 .dark {
-    --vp-c-brand-1: #703dd6;
+    --vp-c-brand-1: #7d8fdf;
     --vp-c-brand-2: #6830a4;
     --vp-c-brand-3: #4c2984;
 }
@@ -23,7 +23,7 @@
 }
   
 /* 也可自行单独修改brand按钮 */
-/*:root {
+/* :root {
     --vp-button-brand-border: #F6CEEC;
     --vp-button-brand-text: #F6CEEC;
     --vp-button-brand-bg: #D939CD;
@@ -52,4 +52,35 @@
 
 .medium-zoom-image {
     z-index: 9999 !important;/* 给的值是21，但是实测盖不住，直接999 */
+}
+
+/* h1 {
+    background: -webkit-linear-gradient(-45deg, #af34e4 5%, #5aa6dd 15%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+} */
+/* h1标题颜色 */
+
+/* 提示框背景颜色 */
+:root {
+    --vp-custom-block-tip-bg: var(--vp-c-green-soft);
+}
+
+/* 提示框 */
+.custom-block.tip {
+    border-color: var(--vp-c-green-2);
+}
+
+/* 警告框 */
+.custom-block.warning {
+/* border-color: #d97706; */
+    border-color: var(--vp-c-yellow-2);
+}
+
+/* 危险框 */
+.custom-block.danger {
+/* border-color: #f43f5e; */
+    border-color: var(--vp-c-red-2);
 }

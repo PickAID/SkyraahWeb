@@ -1,4 +1,4 @@
-//// @ts-nocheck
+// @ts-nocheck
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
@@ -8,12 +8,15 @@ import Fixer from './components/DarkFixer.vue'
 //import ILayout from './Layout.vue'
 import './style.css'
 import '@mdit/plugin-spoiler/style'
+import '@mdit/plugin-alert/style'
 import './styles/index.css'
 import "vitepress-markdown-timeline/dist/theme/index.css";
 
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
+
+import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
 
 export default {
   extends: DefaultTheme,
@@ -27,6 +30,7 @@ export default {
   enhanceApp: (ctx) => {
     DefaultTheme.enhanceApp(ctx);
     ctx.app.use(vuetify);
+    enhanceAppWithTabs(ctx.app);
   },
 
   setup() {

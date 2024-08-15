@@ -1,4 +1,4 @@
-// @ts-nocheck
+//// @ts-nocheck
 import { defineConfig } from 'vitepress'
 import { SidebarGenerator } from "./utils/sidebarGenerator"
 
@@ -9,6 +9,8 @@ import { ins } from "@mdit/plugin-ins"
 import { mark } from "@mdit/plugin-mark"
 import { ruby } from "@mdit/plugin-ruby"
 import timeline from "vitepress-markdown-timeline"; 
+import { alert } from "@mdit/plugin-alert";
+import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -46,6 +48,8 @@ export default defineConfig({
       md.use(mark);
       md.use(ruby);
       md.use(timeline);
+      md.use(alert);
+      md.use(tabsMarkdownPlugin);
     }
   },
   vite: {

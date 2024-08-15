@@ -12,7 +12,7 @@ hero:
       link: /zh_cn/transdeceit/
     - theme: brand
       text: 阿卡夏
-      link: /zh_cn/akashic/index
+      link: /zh_cn/akashic/
 
 # features:
 #   - title: Feature A

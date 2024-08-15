@@ -65,13 +65,14 @@ export class SidebarGenerator{
         this.items.forEach(item => {
             const filePath: string = path.join(this.dirPath, item);
             const file: FileFrontMatter| null = this.fileReader(filePath);
-            if(!this.isDir(filePath)) {
+            if(!this.isDir(filePath) && !file?.noguide) {
                 const itemWithoutMd: string = item.replace(/\.md$/i, "")
                 this._sidebar.items.push({
                     text : file?.title || itemWithoutMd,
                     link : `${this.correctedPathname}/${itemWithoutMd}`
                 });
             }
+            
         });
     }
 
@@ -83,7 +84,7 @@ export class SidebarGenerator{
         try {
             const fileObject: string = fs.readFileSync(filePath, 'utf8');
             const {data} = matter(fileObject);
-            if (data.title) {
+            if (data) {
                 return data as FileFrontMatter;
             } else {
                 throw new Error('Invalid file format');
@@ -112,7 +113,7 @@ export class SidebarGenerator{
         fs.writeFileSync(path.join(__dirname, 'dev.log'), `${string}\n`, { flag: 'a+' });
     }
 
-    private filterOutWhiteList = (files: string[], whiteList: string[]) => files.filter((file: string) => !whiteList.includes(file));
+    private filterOutWhiteList = (files: string[], blackList: string[]) => files.filter((file: string) => !blackList.includes(file));
 }
 
 interface Sidebar {
@@ -138,4 +139,5 @@ interface SubDir {
 }
 interface FileFrontMatter {
     title: string;
+    noguide?: boolean;
 }

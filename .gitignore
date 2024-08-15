@@ -4,3 +4,4 @@ out
 */.vitepress/cache
 */.vitepress/dist
 .vitepress/cache
+*.lock
