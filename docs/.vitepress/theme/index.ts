@@ -1,4 +1,4 @@
-// @ts-nocheck
+//// @ts-nocheck
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
@@ -19,8 +19,8 @@ export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      "layout-bottom" : () => h(Footer),
       "layout-top" : () => h(Fixer),
+      "layout-bottom" : () => h(Footer),
     })
   },
   

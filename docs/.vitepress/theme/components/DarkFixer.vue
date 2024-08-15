@@ -7,17 +7,17 @@ const { isDark } = useData();
 const route = useRoute()
 const isHomePage = ref(true)
 
-const setHeroBackground = (isDarkMode: boolean) => {
-  if (!isHomePage.value) return;
+// const setHeroBackground = (isDarkMode: boolean) => {
+//   if (!isHomePage.value) return;
   
-  const darkGradient = 'linear-gradient(-45deg, #3a2f2f 50%, #4a3f3f 50%)';
-  const lightGradient = 'linear-gradient(-45deg, #93f5fc 50%, #cadfd9 50%)';
-  const darkBlur = 'blur(72px)';
-  const lightBlur = 'blur(68px)';
+//   const darkGradient = 'linear-gradient(-45deg, #3a2f2f 50%, #4a3f3f 50%)';
+//   const lightGradient = 'linear-gradient(-45deg, #93f5fc 50%, #cadfd9 50%)';
+//   const darkBlur = 'blur(72px)';
+//   const lightBlur = 'blur(68px)';
 
-  document.documentElement.style.setProperty('--vp-home-hero-image-background-image', isDarkMode ? darkGradient : lightGradient);
-  document.documentElement.style.setProperty('--vp-home-hero-image-filter', isDarkMode ? darkBlur : lightBlur);
-};
+//   document.documentElement.style.setProperty('--vp-home-hero-image-background-image', isDarkMode ? darkGradient : lightGradient);
+//   document.documentElement.style.setProperty('--vp-home-hero-image-filter', isDarkMode ? darkBlur : lightBlur);
+// };
 
 const updateThemeMode = (isDarkMode: boolean) => {
   if (isDarkMode) {
@@ -32,21 +32,21 @@ onMounted(() => {
   
   watch(isDark, (newValue) => {
     updateThemeMode(newValue);
-    setHeroBackground(newValue)
+    // setHeroBackground(newValue)
   }, { immediate: true });
 
-  watch(() => route.path, (newPath) => {
-    isHomePage.value = newPath === '/';
-    if (isHomePage.value) {
-      setHeroBackground(isDark.value);
-    }
-  });
+  // watch(() => route.path, (newPath) => {
+  //   isHomePage.value = newPath === '/';
+  //   if (isHomePage.value) {
+  //     setHeroBackground(isDark.value);
+  //   }
+  // });
 });
 
-onUnmounted(() => {
-  document.documentElement.style.removeProperty('--vp-home-hero-image-background-image');
-  document.documentElement.style.removeProperty('--vp-home-hero-image-filter');
-});
+// onUnmounted(() => {
+//   document.documentElement.style.removeProperty('--vp-home-hero-image-background-image');
+//   document.documentElement.style.removeProperty('--vp-home-hero-image-filter');
+// });
 </script>
 
 <template>
@@ -54,7 +54,7 @@ onUnmounted(() => {
 </template>
 
 <style>
-:root {
+/* :root {
   --vp-home-hero-image-background-image: linear-gradient(-45deg, #93f5fc 50%, #cadfd9 50%);
   --vp-home-hero-image-filter: blur(68px);
 }
@@ -62,5 +62,5 @@ onUnmounted(() => {
 .dark {
   --vp-home-hero-image-background-image: linear-gradient(-45deg, #3a2f2f 50%, #4a3f3f 50%);
   --vp-home-hero-image-filter: blur(72px);
-}
+} */
 </style>
