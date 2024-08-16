@@ -40,6 +40,7 @@ export default defineConfig({
     }
   },
   markdown: {
+    math:true,
     config: (md) => {
       md.use(spoiler);
       md.use(abbr);

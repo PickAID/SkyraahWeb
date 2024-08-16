@@ -63,11 +63,11 @@
   		"description": "Print to spoiler"
 	},
 	"Print to tab": {
-		"prefix": ":::tabs:",
+		"prefix": ":::tabs",
   		"body": [
-    		":::tabs:$1",
+    		":::tabs",
     		"",
-    		"==$2",
+    		"==$1",
     		"",
     		"$0",
     		"",
@@ -76,9 +76,9 @@
   		"description": "Print to tab"
 	},
 	"Print to tab without tag": {
-		"prefix": ":::tabs",
+		"prefix": ":::tabs:",
   		"body": [
-    		":::tabs:$1",
+    		":::tabs key:$1",
     		"",
     		"==$2",
     		"",
