@@ -13,6 +13,10 @@ hero:
     - theme: brand
       text: 阿卡夏
       link: /zh_cn/akashic/
+    - theme: brand
+      text: 清醒梦
+      link: /zh_cn/lying_world/
+
 
 # features:
 #   - title: Feature A
