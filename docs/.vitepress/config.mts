@@ -23,6 +23,7 @@ export default defineConfig({
     sidebar : {
       "zh_cn/transdeceit/": [new SidebarGenerator("docs/zh_cn/transdeceit").sidebar],
       "zh_cn/akashic/": [new SidebarGenerator("docs/zh_cn/akashic").sidebar],
+      "zh_cn/lying_world/": [new SidebarGenerator("docs/zh_cn/lying_world").sidebar],
     },
 
     outline: {
