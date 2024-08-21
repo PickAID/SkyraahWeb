@@ -11,6 +11,7 @@ import { ruby } from "@mdit/plugin-ruby"
 import timeline from "vitepress-markdown-timeline"; 
 import { alert } from "@mdit/plugin-alert";
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
+import { tasklist } from "@mdit/plugin-tasklist"
 
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -52,6 +53,7 @@ export default defineConfig({
       md.use(timeline);
       md.use(alert);
       md.use(tabsMarkdownPlugin);
+      md.use(tasklist);
     }
   },
   vite: {
