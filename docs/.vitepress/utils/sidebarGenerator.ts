@@ -8,6 +8,7 @@ export class SidebarGenerator{
     private pathname: string;
     private items: string[];
     private _sidebar: Sidebar;
+    private isTop: boolean;
 
     private static DIR_PATH: string = path.resolve();
     private static readonly BLACK_LIST: string[] = [
@@ -16,7 +17,7 @@ export class SidebarGenerator{
         "assets",
     ];
     
-    constructor(pathname:string) {
+    constructor(pathname:string, isTop:boolean) {
         this._sidebar = {
             text: "",
             items: [],
@@ -25,7 +26,8 @@ export class SidebarGenerator{
         this.dirPath = path.join(SidebarGenerator.DIR_PATH, pathname);
         this.items = this.filterOutWhiteList(fs.readdirSync(this.dirPath), SidebarGenerator.BLACK_LIST);
         this.correctedPathname = this.pathname.replace(/^docs\//, '/');
-        
+        this.isTop= isTop;
+
         this.builder();
         this.logger(JSON.stringify(this._sidebar, null, 2))
     }
@@ -36,13 +38,17 @@ export class SidebarGenerator{
     
 
     private builder(): void{
+        if(this.isTop) this._sidebar.items.unshift({
+            text:"回到上级",
+            link:".."
+        })
         const root = this.indexReader()?.root;
         if(root){
             const rootTitle: string = root.title;
             const subDirs: SubDir[] = root.subDir;
             
             this._sidebar.text = rootTitle;
-            this._sidebar.collapsible = root.collapsible;
+            this._sidebar.collapsed = root.collapsed;
 
             subDirs.forEach(subDir => {
                 const subSideBar: Sidebar = {
@@ -53,12 +59,12 @@ export class SidebarGenerator{
                 
                 if (this.isDir(subDirPath)) {
                     subSideBar.text = subDir.title;
+                    subSideBar.collapsed = subDir.collapsed;
                     this._sidebar.items.push(subSideBar);
-                    const subDirContainer = new SidebarGenerator(`${this.pathname}/${subDir.path}`);
+                    const subDirContainer = new SidebarGenerator(`${this.pathname}/${subDir.path}`, false);
                     subDirContainer._sidebar.items.forEach(item => {
                         subSideBar.items.push(item)
                     });
-                    subSideBar.collapsible = subDir.collapsible;
                 }
             });
         }
@@ -118,7 +124,7 @@ export class SidebarGenerator{
 
 interface Sidebar {
     text: string;
-    collapsible?: boolean;
+    collapsed?:boolean;
     items: Array<FileItem | Sidebar>;
 }
 interface FileItem {
@@ -128,14 +134,14 @@ interface FileItem {
 interface Index {
     root: {
         title: string,
-        collapsible?: boolean;
+        collapsed?: boolean; 
         subDir: SubDir[]
     }
 }
 interface SubDir {
     title: string;
     path: string;
-    collapsible?: boolean;
+    collapsed?: boolean;
 }
 interface FileFrontMatter {
     title: string;

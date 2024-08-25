@@ -1,13 +1,16 @@
 ---
 title: 简介
+back: true
 
 root: 
   title: 清醒梦
   subDir: 
     - title: 序列设计
       path: ability
+      collapsed: true
     - title: 故事及设定
       path: story
+      collapsed: true
 ---
 
 # {{$frontmatter.title}}

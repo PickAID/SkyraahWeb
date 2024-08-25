@@ -7,10 +7,8 @@ root:
   subDir:
     - title: 设定与概念
       path: world_setting
-      collapsible: true
     - title: 国家与势力
       path: country
-      collapsible: true
 ---
 
 # {{ $frontmatter.title }}

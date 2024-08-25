@@ -23,9 +23,10 @@ export default defineConfig({
   description: "一个专门用于存放设定的地方",
   themeConfig: {
     sidebar : {
-      "zh_cn/transdeceit/": [new SidebarGenerator("docs/zh_cn/transdeceit").sidebar],
-      "zh_cn/akashic/": [new SidebarGenerator("docs/zh_cn/akashic").sidebar],
-      "zh_cn/lying_world/": [new SidebarGenerator("docs/zh_cn/lying_world").sidebar],
+      "transdeceit/": [new SidebarGenerator("docs/transdeceit", true).sidebar],
+      "akashic/": [new SidebarGenerator("docs/akashic", true).sidebar],
+      "private/modpack/": [new SidebarGenerator("docs/private/modpack", true).sidebar],
+      "private/modpack/lying_world/": [new SidebarGenerator("docs/private/modpack/lying_world", true).sidebar],
     },
 
     outline: {
