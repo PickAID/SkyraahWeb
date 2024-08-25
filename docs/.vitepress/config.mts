@@ -27,7 +27,7 @@ export default defineConfig({
       "akashic/": [new SidebarGenerator("docs/akashic", true).sidebar],
       "private/modpack/": [new SidebarGenerator("docs/private/modpack", true).sidebar],
       "private/modpack/lying_world/": [new SidebarGenerator("docs/private/modpack/lying_world", true).sidebar],
-      "private/mod/": [new SidebarGenerator("docs/private/modpack", true).sidebar],
+      "private/mod/": [new SidebarGenerator("docs/private/mod", true).sidebar],
       "private/mod/assembly_table/": [new SidebarGenerator("docs/private/mod/assembly_table", true).sidebar],
     },
 
