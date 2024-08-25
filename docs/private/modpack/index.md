@@ -1,6 +1,5 @@
 ---
 Layout: doc
-title: 整合包
 noguide: true
 
 root:
