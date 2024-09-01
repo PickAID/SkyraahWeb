@@ -15,9 +15,9 @@ jobs:
 
     - name: npm install, build, and test
       run: |
-        npm install -g pnpm
-        pnpm install
-        pnpm run docs:build
+        npm install -g yarn
+        yarn install
+        yarn run docs:build
         ls -l
 
     - name: ssh deploy
