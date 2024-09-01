@@ -5,7 +5,7 @@ import DefaultTheme from 'vitepress/theme'
 import vuetify from './vuetify'
 import Footer from './components/Footer.vue'
 import Fixer from './components/DarkFixer.vue'
-//import ILayout from './Layout.vue'
+import Layout from './Layout.vue'
 import './style.css'
 import '@mdit/plugin-spoiler/style'
 import '@mdit/plugin-alert/style'
@@ -30,6 +30,7 @@ export default {
   enhanceApp: (ctx) => {
     DefaultTheme.enhanceApp(ctx);
     ctx.app.use(vuetify);
+    ctx.app.use(Layout);
     enhanceAppWithTabs(ctx.app);
   },
 
