@@ -30,7 +30,7 @@ export default {
   enhanceApp: (ctx) => {
     DefaultTheme.enhanceApp(ctx);
     ctx.app.use(vuetify);
-    ctx.app.use(Layout);
+    //ctx.app.use(Layout);
     enhanceAppWithTabs(ctx.app);
   },
 
