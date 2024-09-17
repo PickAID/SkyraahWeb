@@ -97,5 +97,35 @@
 		    ""
 		  ],
 		  "description": "Tab member"
+	},
+
+	"ability tab": {
+		"prefix": "@tab",
+		"body": [
+			"::::info 名称",
+			"",
+			"**$0**",
+			"",
+			"::::  ",
+			"",
+			"::::details 升级材料",
+			"::::",
+			"",
+			"::::details 晋升仪式",
+			"::::",
+			"",
+			"::::details 特质",
+			"",
+			":::info 内在特质",
+			"",
+			":::",
+			"",
+			":::info 外在特质",
+			"",
+			":::",
+			"",
+			"::::"
+		],
+		"description": "ability tab"
 	}
 }
