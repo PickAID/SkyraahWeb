@@ -1,5 +1,8 @@
 name: build and push to sever
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   deployment_job:
