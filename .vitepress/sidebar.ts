@@ -10,7 +10,7 @@ export const Sidebar = () => {
         "private/mod/assembly_table/",
     ]
     dirs.forEach(dir => {
-        ISidebar[dir] = [new SidebarGenerator(`docs/${dir}`, true).sidebar]
+        ISidebar[dir] = [new SidebarGenerator(`docs/${dir}`, false).sidebar]
     })
     return ISidebar;
 }
