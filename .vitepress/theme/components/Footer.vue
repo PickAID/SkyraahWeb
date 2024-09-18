@@ -32,7 +32,7 @@
     const beginYear = '2024'
 
     const author = {
-        code: '椰浆',
+        code: 'CrychicTeam',
         icon: 'mdi-copyright',
     }
     // ICP 备案

@@ -13,6 +13,7 @@ import "vitepress-markdown-timeline/dist/theme/index.css";
 import '@nolebase/vitepress-plugin-enhanced-mark/client/style.css'
 import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
 import './styles/index.css'
+import 'vitepress-plugin-nprogress/lib/css/index.css'
 
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
@@ -23,6 +24,8 @@ import {
   NolebaseEnhancedReadabilitiesMenu, 
   NolebaseEnhancedReadabilitiesScreenMenu, 
 } from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
+
+import vitepressNprogress from 'vitepress-plugin-nprogress'
 
 export default {
   extends: DefaultTheme,
@@ -41,6 +44,7 @@ export default {
     DefaultTheme.enhanceApp(ctx);
     ctx.app.use(vuetify);
     enhanceAppWithTabs(ctx.app);
+    vitepressNprogress(ctx);
   },
 
   setup() {

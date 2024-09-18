@@ -5,7 +5,6 @@ export const Sidebar = () => {
     const dirs = [
         "skyraah/transdeceit/",
         "skyraah/akashic/",
-        "private/modpack/",
         "private/modpack/lying_world/",
         "private/mod/",
         "private/mod/assembly_table/",

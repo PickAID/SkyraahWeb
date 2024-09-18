@@ -7,6 +7,7 @@ import Components from 'unplugin-vue-components/vite';
 import { TDesignResolver } from 'unplugin-vue-components/resolvers';
 
 export const commonConfig :UserConfig<DefaultTheme.Config> = {
+    lang: "zh-CN",
     srcDir: "./docs",
     title: "椰浆设定集",
     description: "一个专门用于存放设定的地方",
@@ -49,6 +50,7 @@ export const commonConfig :UserConfig<DefaultTheme.Config> = {
             noExternal: [
                 'vuetify',
                 '@nolebase/*',
+                'vitepress-plugin-nprogress'
             ],
         },
         plugins: [
