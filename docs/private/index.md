@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "私库设定"
-  text: "存放不对外公开的设定"
-  tagline: 内含各种整合包、模组设计文档
+  name: "小组文档集"
+  text: "存放未完成/不对外开放的的设定"
+  tagline: "内含各种整合包、模组设计文档"
   actions:
     - theme: brand
       text: 模组

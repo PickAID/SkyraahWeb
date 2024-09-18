@@ -1,6 +1,8 @@
 {
   "devDependencies": {
     "@mdi/font": "^7.4.47",
+    "@nolebase/vitepress-plugin-enhanced-mark": "^2.5.0",
+    "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.5.0",
     "@types/node": "^22.2.0",
     "markdown-it-mathjax3": "^4.3.2",
     "medium-zoom": "^1.1.0",
@@ -17,9 +19,9 @@
     }
   },
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "dependencies": {
     "@iconify/json": "^2.2.236",

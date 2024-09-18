@@ -9,28 +9,36 @@ import Layout from './Layout.vue'
 import './style.css'
 import '@mdit/plugin-spoiler/style'
 import '@mdit/plugin-alert/style'
-import './styles/index.css'
 import "vitepress-markdown-timeline/dist/theme/index.css";
+import '@nolebase/vitepress-plugin-enhanced-mark/client/style.css'
+import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
+import './styles/index.css'
 
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
 
 import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
+import { 
+  NolebaseEnhancedReadabilitiesMenu, 
+  NolebaseEnhancedReadabilitiesScreenMenu, 
+} from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      "layout-top" : () => h(Fixer),
-      "layout-bottom" : () => h(Footer),
+    return h(Layout, null, {
+      slot: () => h(DefaultTheme.Layout, null, {
+        "layout-top" : () => h(Fixer),
+        'nav-bar-content-after': () => h(NolebaseEnhancedReadabilitiesMenu), 
+        'nav-screen-content-after': () => h(NolebaseEnhancedReadabilitiesScreenMenu), 
+        "layout-bottom" : () => h(Footer),})
     })
   },
   
   enhanceApp: (ctx) => {
     DefaultTheme.enhanceApp(ctx);
     ctx.app.use(vuetify);
-    //ctx.app.use(Layout);
     enhanceAppWithTabs(ctx.app);
   },
 

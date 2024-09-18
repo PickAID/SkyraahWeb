@@ -1,17 +1,18 @@
 ---
+# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
-  name: "小组文档集"
-  text: "存放未完成/不对外开放的的设定"
-  tagline: "内含各种整合包、模组设计文档"
+  name: "椰浆的设定集"
+  text: "一个专门用于存放设定的地方"
+  tagline: 内含椰浆的各种小说、整合包设定
   actions:
     - theme: brand
-      text: 模组
-      link: ./private/mod
+      text: 谎言彼端
+      link: transdeceit/
     - theme: brand
-      text: 整合包
-      link: ./private/modpack
+      text: 阿卡夏
+      link: akashic/
 
 
 # features:
