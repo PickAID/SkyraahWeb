@@ -32,7 +32,8 @@ export default {
         "layout-top" : () => h(Fixer),
         'nav-bar-content-after': () => h(NolebaseEnhancedReadabilitiesMenu), 
         'nav-screen-content-after': () => h(NolebaseEnhancedReadabilitiesScreenMenu), 
-        "layout-bottom" : () => h(Footer),})
+        "layout-bottom" : () => h(Footer),
+      })
     })
   },
   

@@ -10,6 +10,7 @@ export const commonConfig :UserConfig<DefaultTheme.Config> = {
     srcDir: "./docs",
     title: "椰浆设定集",
     description: "一个专门用于存放设定的地方",
+    cleanUrls:true,
     themeConfig: {
         sidebar : {...Sidebar()},
 
@@ -39,13 +40,16 @@ export const commonConfig :UserConfig<DefaultTheme.Config> = {
     },
     markdown: {...mdPlugins},
     vite: {
-        ssr: {
-            noExternal: ['vuetify','@nolebase/vitepress-plugin-enhanced-readabilities',],
-        },
         optimizeDeps: {
             exclude: [ 
                 '@nolebase/vitepress-plugin-enhanced-readabilities/client', 
             ], 
+        },
+        ssr: {
+            noExternal: [
+                'vuetify',
+                '@nolebase/*',
+            ],
         },
         plugins: [
             AutoImport({
