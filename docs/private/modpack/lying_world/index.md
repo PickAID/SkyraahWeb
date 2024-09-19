@@ -8,8 +8,11 @@ root:
     - title: 序列设计
       path: ability
       collapsed: true
-    - title: 故事及设定
+    - title: 剧情
       path: story
+      collapsed: true
+    - title: 设定
+      path: setting
       collapsed: true
 ---
 
