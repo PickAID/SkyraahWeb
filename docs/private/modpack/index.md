@@ -12,6 +12,7 @@ features:
     link: ./lying_world
   - title: 阿瓦隆归途
     details:
+    link: ./avalon_ward
   - title: 追猎
     details: 一个致于为玩家提供DND风格冒险的整合包。
 # root:
