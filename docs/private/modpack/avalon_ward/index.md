@@ -1,6 +1,6 @@
 ---
-title: 简介
 back: true
+nogui: true
 
 root: 
   title: 阿瓦隆征途
@@ -9,7 +9,3 @@ root:
       path: 开发规范
       collapsed: true
 ---
-
-# {{$frontmatter.title}}
-
-***
