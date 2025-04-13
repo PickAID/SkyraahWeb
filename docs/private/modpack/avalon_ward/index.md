@@ -1,6 +1,7 @@
 ---
 back: true
-nogui: true
+noguide: true
+
 
 root: 
   title: 阿瓦隆征途
