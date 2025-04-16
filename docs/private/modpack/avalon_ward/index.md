@@ -9,4 +9,7 @@ root:
     - title: 开发规范
       path: 开发规范
       collapsed: true
+    - title: 好用工具
+      path: 好用工具
+      collapsed: true
 ---
