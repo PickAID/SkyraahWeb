@@ -1,6 +1,6 @@
 <template>
     <div class="runescribing-editor">
-        <h2 class="editor-title">符文书写台编辑器</h2>
+        <h2 class="editor-title">Rune Scribing-Editor</h2>
 
         <div class="editor-container">
             <div class="canvas-section">
