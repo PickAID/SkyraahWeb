@@ -3,14 +3,13 @@ layout: page
 title: Runescribing Grid Editor
 aside: false
 sidebar: false
-footer: false
 ---
 
 <script setup>
 import RunescribingEditor from './../../../../../../.vitepress/theme/components/AvalonWard/RunescribingEditor.vue'
 </script>
 
-<style>
+<!-- <style>
 /* Remove default page margins and paddings */
 .VPDoc {
   padding: 0 !important;
@@ -54,6 +53,6 @@ html, body, #app, .VPApp, .VPContent, .VPDoc {
 html.dark {
   --vp-c-bg: #1e1e1e;
 }
-</style>
+</style> -->
 
 <RunescribingEditor/>
