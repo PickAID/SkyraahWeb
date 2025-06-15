@@ -5,3 +5,4 @@ out
 .vitepress/dist
 .vitepress/cache
 *.lock
+docs/.vitepress/

@@ -1,14 +1,6 @@
 ---
 Layout: doc
 title: 背景故事
-
-root:
-  title: 谎言彼端
-  subDir:
-    - title: 设定与概念
-      path: world_setting
-    - title: 国家与势力
-      path: country
 ---
 
 # {{ $frontmatter.title }}

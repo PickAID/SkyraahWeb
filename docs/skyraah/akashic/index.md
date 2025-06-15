@@ -2,12 +2,7 @@
 Layout: doc
 title: 背景故事
 
-root:
-  title: 阿卡夏
-  subDir:
-    - title: 设定与概念
-      path: world_setting
-      collapsible: true
+root: true
 ---
 
 # {{ $frontmatter.title }}

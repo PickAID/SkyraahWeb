@@ -5,10 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "pnpm run docs:dev",
+            "command": "yarn docs:dev",
             "name": "Run Dev",
             "request": "launch",
             "type": "node-terminal"
-        },
+        }
+        
     ]
 }

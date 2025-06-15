@@ -1,64 +1,95 @@
-// @ts-nocheck
-import { h } from 'vue'
-import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import vuetify from './vuetify'
-import Footer from './components/Footer.vue'
-import Fixer from './components/DarkFixer.vue'
-import Layout from './Layout.vue'
-import './style.css'
-import '@mdit/plugin-spoiler/style'
-import '@mdit/plugin-alert/style'
-import "vitepress-markdown-timeline/dist/theme/index.css";
-import '@nolebase/vitepress-plugin-enhanced-mark/client/style.css'
-import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
-import './styles/index.css'
-import 'vitepress-plugin-nprogress/lib/css/index.css'
+//@ts-nocheck
+import { h } from "vue";
+import type { Theme } from "vitepress";
+import DefaultTheme from 'vitepress/theme-without-fonts'
+import vitepressNprogress from "vitepress-plugin-nprogress";
+import { useData, useRoute, inBrowser } from "vitepress";
+import "./styles/index.css";
+import "./styles/base/fonts.css";
+import 'virtual:group-icons.css'
+import { enhanceAppWithTabs } from "vitepress-plugin-tabs/client";
+import vuetify from "./vuetify";
+import { onMounted, onUnmounted, watch } from "vue";
+import mermaid from "mermaid";
+import {
+    NolebaseEnhancedReadabilitiesMenu,
+    NolebaseEnhancedReadabilitiesScreenMenu,
+} from "@nolebase/vitepress-plugin-enhanced-readabilities/client";
+import { NolebaseInlineLinkPreviewPlugin } from "@nolebase/vitepress-plugin-inline-link-preview/client";
 
-import mediumZoom from 'medium-zoom';
-import { onMounted, watch, nextTick } from 'vue';
-import { useRoute } from 'vitepress';
+// Import components
+import Layout from "./Layout.vue";
+import VPHero from "./components/VPHero.vue";
+import { bindFancybox, destroyFancybox } from "./components/media/ImgViewer";
+import { Animation, Preview, NotFound, Buttons } from "./components/ui";
+import { comment } from "./components/content";
+import { Footer } from "./components/navigation";
+import { ResponsibleEditor } from "./components/content";
 
-import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
-import { 
-  NolebaseEnhancedReadabilitiesMenu, 
-  NolebaseEnhancedReadabilitiesScreenMenu, 
-} from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
+// Import utilities
+import { setupLanguageControl } from "@utils/i18n/languageControl";
+import { initMermaidConfig } from "@utils/charts/mermaid";
+import { registerComponents } from "@utils/vitepress/components";
 
-import vitepressNprogress from 'vitepress-plugin-nprogress'
-
+// Theme configuration
 export default {
-  extends: DefaultTheme,
-  Layout: () => {
-    return h(Layout, null, {
-      slot: () => h(DefaultTheme.Layout, null, {
-        "layout-top" : () => h(Fixer),
-        'nav-bar-content-after': () => h(NolebaseEnhancedReadabilitiesMenu), 
-        'nav-screen-content-after': () => h(NolebaseEnhancedReadabilitiesScreenMenu), 
-        "layout-bottom" : () => h(Footer),
-      })
-    })
-  },
-  
-  enhanceApp: (ctx) => {
-    DefaultTheme.enhanceApp(ctx);
-    ctx.app.use(vuetify);
-    enhanceAppWithTabs(ctx.app);
-    vitepressNprogress(ctx);
-  },
+    extends: DefaultTheme,
+    Layout: () => {
+        const props: Record<string, any> = {};
+        const { frontmatter } = useData();
+        
+        if (frontmatter.value?.layoutClass) {
+            props.class = frontmatter.value.layoutClass;
+        }
+        
+        return h(Animation, props, {
+            slot: () => h(DefaultTheme.Layout, null, {
+                "aside-outline-after": () => null,
+                "layout-bottom": () => h(Footer),
+                "doc-footer-before": () => h(ResponsibleEditor),
+                "not-found": () => [h(NotFound)],
+                "nav-bar-content-after": () => h(NolebaseEnhancedReadabilitiesMenu),
+                "nav-screen-content-after": () => h(NolebaseEnhancedReadabilitiesScreenMenu),
+                "doc-before": () => [h(Preview)],
+            }),
+        });
+    },
+    
+    async enhanceApp(ctx) {
+        if (!import.meta.env.SSR) {
+            ctx.app.use(vuetify);
+            ctx.app.use(NolebaseInlineLinkPreviewPlugin);
+        }
+        
+        DefaultTheme.enhanceApp(ctx);
+        vitepressNprogress(ctx);
+        enhanceAppWithTabs(ctx.app);
+        registerComponents(ctx.app);
+    },
+    
+    setup() {
+        const route = useRoute();
+        const { isDark } = useData();
 
-  setup() {
-    const route = useRoute();
-    const initZoom = () => {
-      // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
-      mediumZoom('.main img', { background: 'var(--vp-c-bg)' }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
-    };
-    onMounted(() => {
-      initZoom();
-    });
-    watch(
-      () => route.path,
-      () => nextTick(() => initZoom())
-    );
-  },
-} satisfies Theme
+        // Watch for theme changes and update Vuetify theme
+        watch(isDark, (dark) => {
+            if (inBrowser) {
+                vuetify.theme.global.name.value = dark ? 'dark' : 'light';
+            }
+        }, { immediate: true });
+        
+        onMounted(() => {
+            if (!import.meta.env.SSR) {
+                setupLanguageControl();
+                initMermaidConfig();
+                mermaid.init(undefined, ".mermaid");
+                bindFancybox();
+                watch(() => route.path, setupLanguageControl);
+            }
+        });
+        
+        onUnmounted(() => {
+            destroyFancybox();
+        });
+    },
+} satisfies Theme;

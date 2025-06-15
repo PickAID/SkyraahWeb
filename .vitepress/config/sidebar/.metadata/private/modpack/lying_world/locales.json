@@ -1,0 +1,27 @@
+{
+  "_self_": {
+    "valueHash": "e05dce83e5129785b9f316978a14b896",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "ability/": {
+    "valueHash": "424dbe533d5a5b0904ee6f79262caa5c",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "setting/": {
+    "valueHash": "7dc22b2c6a992f0232345df41303f5ea",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "story/": {
+    "valueHash": "bec670e5a55424d840db8636ecc28828",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "todo.md": {
+    "valueHash": "efdca82447dc048a358a7d5d9fe09dee",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  }
+}

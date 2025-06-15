@@ -1,5 +1,7 @@
 ---
 layout: home
+root: true
+title: "小组文档集"
 
 hero:
   name: "小组文档集"

@@ -1,15 +1,4 @@
 ---
-back: true
-noguide: true
-
-
-root: 
-  title: 阿瓦隆征途
-  subDir: 
-    - title: 开发规范
-      path: 开发规范
-      collapsed: true
-    - title: 好用工具
-      path: 好用工具
-      collapsed: true
+root: true
+title: 阿瓦隆归途
 ---

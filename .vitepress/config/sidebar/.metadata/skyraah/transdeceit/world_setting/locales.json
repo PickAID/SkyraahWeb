@@ -1,0 +1,32 @@
+{
+  "_self_": {
+    "valueHash": "351ee309c0e1abee5ce2d86a15fe1b08",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "1_falling_effect.md": {
+    "valueHash": "f9817efe57c8a03db941e8cfbf03b5b5",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "2_rule_lines.md": {
+    "valueHash": "109e4e73d346103acc08f4f8814f95c7",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "3_magician.md": {
+    "valueHash": "509ad16cffdb0eb42f820522f180f21c",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "4_sanity.md": {
+    "valueHash": "41c181ac44edf3df95ad9d6f4d3086b3",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "5_truth.md": {
+    "valueHash": "ba6cf6c75c1c3197c83343d53900cd9d",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  }
+}

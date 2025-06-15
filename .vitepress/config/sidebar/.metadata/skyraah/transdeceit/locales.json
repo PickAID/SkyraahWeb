@@ -1,0 +1,17 @@
+{
+  "_self_": {
+    "valueHash": "78c847e08c2e76f998ac45b30e1eeda4",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "country/": {
+    "valueHash": "351ee309c0e1abee5ce2d86a15fe1b08",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "world_setting/": {
+    "valueHash": "351ee309c0e1abee5ce2d86a15fe1b08",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  }
+}

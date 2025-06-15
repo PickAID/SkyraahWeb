@@ -1,7 +1,14 @@
-
 import { defineConfig } from 'vitepress'
-import {commonConfig} from "./config/commonConfig"
+import { withMermaid } from "vitepress-plugin-mermaid";
 
-export default defineConfig({
-    ...commonConfig
-})
+import {commonConfig} from "./config/common-config"
+
+/**
+ * VitePress configuration with Mermaid support
+ * Combines common configuration with locale-specific settings
+ */
+export default withMermaid(
+    defineConfig({
+        ...commonConfig
+    })
+);

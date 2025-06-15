@@ -1,0 +1,17 @@
+{
+  "_self_": {
+    "valueHash": "2c17c6393771ee3048ae34d6b380c5ec",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "mod/": {
+    "valueHash": "b58ac85a66d1f21aa32eebbdf8c08db2",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  },
+  "modpack/": {
+    "valueHash": "159beae91cb16f7b6bef81a455dbe9b5",
+    "isUserSet": false,
+    "isActiveInStructure": true
+  }
+}
