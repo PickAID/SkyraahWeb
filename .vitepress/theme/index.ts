@@ -82,9 +82,29 @@ export default {
             if (!import.meta.env.SSR) {
                 setupLanguageControl();
                 initMermaidConfig();
-                mermaid.init(undefined, ".mermaid");
+                
+                // 异步初始化Mermaid，防止阻塞页面渲染
+                setTimeout(async () => {
+                    try {
+                        await mermaid.init(undefined, ".mermaid");
+                    } catch (error) {
+                        console.warn('Mermaid initialization failed:', error);
+                    }
+                }, 100);
+                
                 bindFancybox();
-                watch(() => route.path, setupLanguageControl);
+                
+                // 使用 nextTick 和防抖来避免路由监听器的无限递归
+                let isProcessing = false;
+                watch(() => route.path, () => {
+                    if (!isProcessing) {
+                        isProcessing = true;
+                        setTimeout(() => {
+                            setupLanguageControl();
+                            isProcessing = false;
+                        }, 100);
+                    }
+                });
             }
         });
         

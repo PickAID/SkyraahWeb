@@ -57,8 +57,28 @@ export const commonConfig :UserConfig<DefaultTheme.Config> = {
                 'vitepress-plugin-nprogress',
                 'vitepress-plugin-tabs/client',
                 '@lite-tree/vue'
-            ],
-            force: true
+            ]
+        },
+        build: {
+            rollupOptions: {
+                output: {
+                    manualChunks: {
+                        vendor: ['vue'],
+                        ui: ['vuetify'],
+                        charts: ['mermaid', 'echarts'],
+                        markdown: ['markdown-it', 'shiki-magic-move']
+                    }
+                }
+            },
+            chunkSizeWarningLimit: 1000,
+            target: 'esnext',
+            minify: 'terser',
+            terserOptions: {
+                compress: {
+                    drop_console: true,
+                    drop_debugger: true
+                }
+            }
         },
         ssr: {
             noExternal: [
@@ -142,41 +162,41 @@ export const commonConfig :UserConfig<DefaultTheme.Config> = {
         }       
     },
     ignoreDeadLinks: true,
-    // transformHead({ assets }) {
-    //     const preloadLinks = [];
+    transformHead({ assets }) {
+        const preloadLinks = [];
         
-    //     const scFontFile = assets.find(file => /HarmonyOS_Sans_SC_Regular\.[\w-]+\.ttf/.test(file));
-    //     console.log(scFontFile);
-    //     if (scFontFile) {
-    //         preloadLinks.push([
-    //             'link',
-    //             {
-    //                 rel: 'preload',
-    //                 href: scFontFile,
-    //                 as: 'font',
-    //                 type: 'font/ttf',
-    //                 crossorigin: ''
-    //             }
-    //         ]);
-    //     }
+        const scFontFile = assets.find(file => /HarmonyOS_Sans_SC_Regular\.[\w-]+\.ttf/.test(file));
+        console.log(scFontFile);
+        if (scFontFile) {
+            preloadLinks.push([
+                'link',
+                {
+                    rel: 'preload',
+                    href: scFontFile,
+                    as: 'font',
+                    type: 'font/ttf',
+                    crossorigin: ''
+                }
+            ]);
+        }
 
-    //     const tcFontFile = assets.find(file => /HarmonyOS_Sans_TC_Regular\.[\w-]+\.ttf/.test(file));
-    //     if (tcFontFile) {
-    //         preloadLinks.push([
-    //             'link',
-    //             {
-    //                 rel: 'preload',
-    //                 href: tcFontFile,
-    //                 as: 'font',
-    //                 type: 'font/ttf',
-    //                 crossorigin: ''
-    //             }
-    //         ]);
-    //     }
+        const tcFontFile = assets.find(file => /HarmonyOS_Sans_TC_Regular\.[\w-]+\.ttf/.test(file));
+        if (tcFontFile) {
+            preloadLinks.push([
+                'link',
+                {
+                    rel: 'preload',
+                    href: tcFontFile,
+                    as: 'font',
+                    type: 'font/ttf',
+                    crossorigin: ''
+                }
+            ]);
+        }
 
-    //     return [
-    //         ...preloadLinks,
-    //         ["link", { rel: "icon", href: "https://docs.mihono.cn/favicon.ico" }],
-    //     ];
-    // },
+        return [
+            ...preloadLinks,
+            // ["link", { rel: "icon", href: "https://docs.mihono.cn/favicon.ico" }],
+        ];
+    },
 }

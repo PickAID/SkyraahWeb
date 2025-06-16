@@ -10,17 +10,34 @@ import type { GitHubCommit, TranslationDictionary } from '../types';
  */
 export const githubApi = {
   /** Fetch all commits from a GitHub repository */
-  fetchAllCommits: async (username: string, repoName: string): Promise<GitHubCommit[]> => {
+  fetchAllCommits: async (username: string, repoName: string, maxPages: number = 10): Promise<GitHubCommit[]> => {
     let allCommits: GitHubCommit[] = [];
     let page = 1;
+    const maxRetries = 3;
+    let retryCount = 0;
 
-    while (true) {
+    while (page <= maxPages) {
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
+
         const response = await fetch(
-          `https://api.github.com/repos/${username}/${repoName}/commits?page=${page}&per_page=100`
+          `https://api.github.com/repos/${username}/${repoName}/commits?page=${page}&per_page=100`,
+          { 
+            signal: controller.signal,
+            headers: {
+              'Accept': 'application/vnd.github.v3+json'
+            }
+          }
         );
         
+        clearTimeout(timeoutId);
+        
         if (!response.ok) {
+          if (response.status === 403) {
+            console.warn("GitHub API rate limit exceeded");
+            break;
+          }
           throw new Error(`GitHub API error: ${response.status}`);
         }
         
@@ -30,9 +47,18 @@ export const githubApi = {
         
         allCommits = allCommits.concat(commits);
         page++;
+        retryCount = 0; // 重置重试计数
       } catch (error) {
         console.error("Error fetching GitHub commit data:", error);
-        break;
+        retryCount++;
+        
+        if (retryCount >= maxRetries) {
+          console.error("Max retries exceeded, stopping GitHub API calls");
+          break;
+        }
+        
+        // 等待后重试
+        await new Promise(resolve => setTimeout(resolve, 1000 * retryCount));
       }
     }
 

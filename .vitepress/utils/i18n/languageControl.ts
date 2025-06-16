@@ -55,7 +55,16 @@ export const checkFontLoading = async () => {
     if (import.meta.env.SSR) return;
     
     try {
-        const fonts = await document.fonts.ready;
+        // 添加超时保护
+        const fontCheckPromise = Promise.race([
+            document.fonts.ready,
+            new Promise((_, reject) => 
+                setTimeout(() => reject(new Error('Font loading timeout')), 5000)
+            )
+        ]);
+        
+        await fontCheckPromise;
+        
         const scLoaded = await document.fonts.check('400 12px "HarmonyOS Sans SC"');
         const tcLoaded = await document.fonts.check('400 12px "HarmonyOS Sans TC"');
         
@@ -64,6 +73,7 @@ export const checkFontLoading = async () => {
         }
     } catch (error) {
         console.error('Font loading check error:', error);
+        // 字体加载失败不应该阻止页面继续渲染
     }
 };
 
