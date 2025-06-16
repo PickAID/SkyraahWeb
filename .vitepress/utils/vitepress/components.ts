@@ -5,7 +5,8 @@ import {
     ResponsibleEditor,
     MdDialog,
     MdMultiPageDialog,
-    CustomAlert
+    CustomAlert,
+    RunescribingEditor
 } from "../../theme/components/content";
 import { YoutubeVideo, BilibiliVideo, PdfViewer } from "../../theme/components/media";
 import { Footer, MNavLinks } from "../../theme/components/navigation";
@@ -41,7 +42,8 @@ const components = {
     // Vuetify components
     MdDialog,
     MdMultiPageDialog,
-    CustomAlert
+    CustomAlert,
+    RunescribingEditor
 };
 
 export const registerComponents = (app: App) => {
