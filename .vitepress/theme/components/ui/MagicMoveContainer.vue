@@ -42,27 +42,23 @@
         stepsLz: string;
         stepRanges: string[][];
     }>();
-
-    /**
-     * Generate a random string for unique element IDs
-     */
-    function generateRandomString(length: number) {
-        const charset =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        let result = "";
-        for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * charset.length);
-            result += charset[randomIndex];
+    
+    function generateStableId(content: string): string {
+        let hash = 0;
+        for (let i = 0; i < content.length; i++) {
+            const char = content.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash;
         }
-        return result;
+        const hashStr = Math.abs(hash).toString(36);
+        return 'magic-move-' + hashStr;
     }
 
     const highlighter = ref<HighlighterCore | null>(null);
-    const elementId = generateRandomString(6);
+    const elementId = generateStableId(props.stepsLz);
     const content = JSON.parse(decodeURIComponent(props.stepsLz));
     const step = ref(0);
 
-    // Initialize highlighter with comprehensive language support
     onMounted(async () => {
         try {
             highlighter.value = await createHighlighter({

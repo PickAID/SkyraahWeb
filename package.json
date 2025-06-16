@@ -16,6 +16,7 @@
         "mermaid": "^11.6.0",
         "postcss": "^8.5.4",
         "sass": "^1.89.0",
+        "terser": "^5.42.0",
         "ts-node": "^10.9.2",
         "tsx": "^4.19.4",
         "unplugin-auto-import": "^19.3.0",

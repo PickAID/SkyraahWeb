@@ -64,6 +64,8 @@ export default {
         DefaultTheme.enhanceApp(ctx);
         vitepressNprogress(ctx);
         enhanceAppWithTabs(ctx.app);
+        
+        // 只调用一次组件注册，避免重复注册
         registerComponents(ctx.app);
     },
     
@@ -94,17 +96,12 @@ export default {
                 
                 bindFancybox();
                 
-                // 使用 nextTick 和防抖来避免路由监听器的无限递归
-                // let isProcessing = false;
+                // 简化路由监听器，避免可能的递归
                 // watch(() => route.path, () => {
-                //     if (!isProcessing) {
-                //         isProcessing = true;
-                //         setTimeout(() => {
-                //             setupLanguageControl();
-                //             isProcessing = false;
-                //         }, 100);
-                //     }
-                // });
+                //     setTimeout(() => {
+                //         setupLanguageControl();
+                //     }, 100);
+                // }, { immediate: false });
             }
         });
         
