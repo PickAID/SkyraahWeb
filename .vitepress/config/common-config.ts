@@ -70,15 +70,7 @@ export const commonConfig :UserConfig<DefaultTheme.Config> = {
                     }
                 }
             },
-            chunkSizeWarningLimit: 1000,
-            target: 'esnext',
-            minify: 'terser',
-            terserOptions: {
-                compress: {
-                    drop_console: true,
-                    drop_debugger: true
-                }
-            }
+            chunkSizeWarningLimit: 1000
         },
         ssr: {
             noExternal: [
