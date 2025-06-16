@@ -51,26 +51,12 @@ export const commonConfig :UserConfig<DefaultTheme.Config> = {
                 "virtual:nolebase-git-changelog"
             ],
             include: [
-                'vue',
                 '@vueuse/core',
                 'mermaid',
                 'vitepress-plugin-nprogress',
                 'vitepress-plugin-tabs/client',
                 '@lite-tree/vue'
             ]
-        },
-        build: {
-            rollupOptions: {
-                output: {
-                    manualChunks: {
-                        vendor: ['vue'],
-                        ui: ['vuetify'],
-                        charts: ['mermaid', 'echarts'],
-                        markdown: ['markdown-it', 'shiki-magic-move']
-                    }
-                }
-            },
-            chunkSizeWarningLimit: 1000
         },
         ssr: {
             noExternal: [
