@@ -1,6 +1,5 @@
 ---
 layout: home
-root: true
 title: "小组文档集"
 
 hero:
