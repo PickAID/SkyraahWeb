@@ -80,7 +80,7 @@ export default {
         
         onMounted(() => {
             if (!import.meta.env.SSR) {
-                setupLanguageControl();
+                // setupLanguageControl();
                 initMermaidConfig();
                 
                 // 异步初始化Mermaid，防止阻塞页面渲染
@@ -95,16 +95,16 @@ export default {
                 bindFancybox();
                 
                 // 使用 nextTick 和防抖来避免路由监听器的无限递归
-                let isProcessing = false;
-                watch(() => route.path, () => {
-                    if (!isProcessing) {
-                        isProcessing = true;
-                        setTimeout(() => {
-                            setupLanguageControl();
-                            isProcessing = false;
-                        }, 100);
-                    }
-                });
+                // let isProcessing = false;
+                // watch(() => route.path, () => {
+                //     if (!isProcessing) {
+                //         isProcessing = true;
+                //         setTimeout(() => {
+                //             setupLanguageControl();
+                //             isProcessing = false;
+                //         }, 100);
+                //     }
+                // });
             }
         });
         
